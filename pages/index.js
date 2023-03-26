@@ -92,9 +92,7 @@ export default function Home({data}) {
 
     <NextUIProvider>
     <Grid.Container gap={2} justify="center">
-      <Grid xs={4}>
-        <MockItem text="1 of 3" />
-      </Grid>
+
       <Grid xs={4}>
       <Card css={{ h: "$50", $$cardColor: '$colors$primary' }}>
         <Card.Body>
@@ -103,10 +101,10 @@ export default function Home({data}) {
             </Text>
             <form onSubmit={handleSubmit}>
 
-            <Input  id="username" clearable bordered labelPlaceholder="Username" initialValue="" />
+            <Input minlength="4" maxlength="25"  id="username" clearable bordered labelPlaceholder="Username" initialValue="" />
 
             <Spacer y={2} />
-            <Input id="password" clearable bordered labelPlaceholder="Password" initialValue="" />
+            <Input pattern="[a-z0-9]{1,15}" title="Password should be digits (0 to 9) or alphabets (a to z)." minLength="4" maxLength="15" type = "password" id="password" clearable bordered labelPlaceholder="Password" initialValue="" />
 
             <Spacer y={2} />
             <Button type="submit" color="secondary" auto>
@@ -117,9 +115,7 @@ export default function Home({data}) {
         </Card.Body>
       </Card>
       </Grid>
-      <Grid xs={4}>
-        <MockItem text="3 of 3" />
-      </Grid>
+
     </Grid.Container>
 
     </NextUIProvider>

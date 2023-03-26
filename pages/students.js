@@ -81,9 +81,7 @@ export default function students({data}) {
 
     <NextUIProvider>
     <Grid.Container gap={2} justify="center">
-      <Grid xs={4}>
-        <MockItem text="1 of 3" />
-      </Grid>
+
       <Grid xs={4}>
       <Card css={{ h: "$50", $$cardColor: '$colors$primary' }}>
         <Card.Body>
@@ -98,14 +96,14 @@ export default function students({data}) {
             <Input id="surname" clearable bordered labelPlaceholder="Surname" initialValue="" />
 
             <Spacer y={2} />
-            <Input id="email" clearable bordered labelPlaceholder="Email" initialValue="" />
+            <Input id="email" type="email" minlength="4" maxlength="25" clearable bordered labelPlaceholder="Email" initialValue="" />
 
             <Spacer y={2} />
             <Input id="address" clearable bordered labelPlaceholder="Address" initialValue="" />
 
             <Spacer y={2} />
             
-            <Input id="telephone" clearable bordered labelPlaceholder="Telephone" initialValue="" />
+            <Input id="telephone" pattern="[0-9]{1,15}" clearable bordered labelPlaceholder="Telephone" initialValue="" />
             <Spacer y={2} />
             <Button type="submit" color="secondary" auto>
               Register Student
@@ -115,9 +113,7 @@ export default function students({data}) {
         </Card.Body>
       </Card>
       </Grid>
-      <Grid xs={4}>
-        <MockItem text="3 of 3" />
-      </Grid>
+
     </Grid.Container>
 
     </NextUIProvider>

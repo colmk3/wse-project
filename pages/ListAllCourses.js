@@ -9,6 +9,64 @@ import { Link } from "@nextui-org/react";
 
 export default function ListAllCourses({data}) {
 
+  async function deleteData(coursed) {
+     
+    
+    // grab the variables from the form.
+
+   
+
+    // if we want to get a parameter from the URL such as
+    // the ID.
+    
+    
+
+    const data = {
+        coursed:coursed,
+        
+      }
+  
+      // Send the data to the server in JSON format.
+      const JSONdata = JSON.stringify(data)
+  
+      // API endpoint where we send form data.
+      const endpoint = '/api/deleteCourse'
+ 
+ 
+  
+      // Form the request for sending data to the server.
+      const options = {
+        // The method is POST because we are sending data.
+        method: 'POST',
+        // Tell the server we're sending JSON.
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        // Body of the request is the JSON data we created above.
+        body: JSONdata,
+      }
+ 
+      
+  
+      // Send the form data to our forms API on Vercel and get a response.
+      const response = await fetch(endpoint, options)
+  
+      // Get the response data from server as JSON.
+      // If server returns the name submitted, that means the form works.
+      const result = await response.json()
+
+
+    
+     
+     alert(`Deleted`)
+
+
+    
+
+
+ 
+}
+
     const MockItem = ({ text }) => {
         return (
           <Card css={{ h: "$24", $$cardColor: '$colors$primary' }}>
@@ -20,19 +78,51 @@ export default function ListAllCourses({data}) {
           </Card>
         );
       };
+  
 
 
   return (
     <>
  <Grid.Container gap={2} justify="center">
       <Grid xs={4}>
-        <MockItem text="1 of 3" />
+      <Card css={{ h: "$50", $$cardColor: '$colors$primary' }}>
+        <Card.Body>
+
+        
+            <Button auto flat as={Link} href="/students">
+             Register New Students
+            </Button>
+
+            
+        </Card.Body>
+      </Card>
       </Grid>
       <Grid xs={4}>
-        <MockItem text="2 of 3" />
+      <Card css={{ h: "$50", $$cardColor: '$colors$primary' }}>
+        <Card.Body>
+
+        
+            <Button auto flat as={Link} href="/ListAllStudents">
+             See Student List and Assign Courses
+            </Button>
+
+            
+        </Card.Body>
+      </Card>
       </Grid>
+
       <Grid xs={4}>
-        <MockItem text="3 of 3" />
+      <Card css={{ h: "$50", $$cardColor: '$colors$primary' }}>
+        <Card.Body>
+
+        
+            <Button auto flat as={Link} href="/chat">
+             Chat with Someone
+            </Button>
+
+            
+        </Card.Body>
+      </Card>
       </Grid>
     </Grid.Container>
 
@@ -57,10 +147,12 @@ css={{
   <Table.Column>Description </Table.Column>
   <Table.Column>NFQ </Table.Column>
   <Table.Column>Year </Table.Column>
-  <Table.Column>Option </Table.Column>
+  <Table.Column>View </Table.Column>
+  <Table.Column>Delete </Table.Column>
 </Table.Header>
 <Table.Body >
   <Table.Row key="1">
+    <Table.Cell></Table.Cell>
     <Table.Cell></Table.Cell>
     <Table.Cell></Table.Cell>
     <Table.Cell></Table.Cell>
@@ -85,8 +177,11 @@ css={{
         <Table.Cell>{item.desc} </Table.Cell>
         <Table.Cell>{item.nfq} </Table.Cell>
         <Table.Cell>{item.courseyear} </Table.Cell>
+
         
         <Table.Cell><Link href={`/viewAll?coursed=`+item.coursed}>View</Link></Table.Cell>
+        <Table.Cell>
+          <Button type="button" onClick={(save) => deleteData(item.coursed)}  size="xs">Delete</Button></Table.Cell>
       </Table.Row>
 
 

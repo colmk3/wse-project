@@ -20,7 +20,7 @@ export default function ListAllStudents({data}) {
         );
       };
 
-      async function saveData(sid,enrolledin) {
+      async function saveData(sid) {
      
     
         // grab the variables from the form.
@@ -86,17 +86,7 @@ export default function ListAllStudents({data}) {
 
   return (
     <>
- <Grid.Container gap={2} justify="center">
-      <Grid xs={4}>
-        <MockItem text="1 of 3" />
-      </Grid>
-      <Grid xs={4}>
-        <MockItem text="2 of 3" />
-      </Grid>
-      <Grid xs={4}>
-        <MockItem text="3 of 3" />
-      </Grid>
-    </Grid.Container>
+
 
    
 
